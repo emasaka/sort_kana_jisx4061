@@ -1,6 +1,6 @@
 # SortKanaJisx4061
 
-Sort Japanese Kana strings by JIS X 4061 (日本語文字列照合順番) order in Ruby.
+Sort Japanese Kana strings by [JIS X 4061 (日本語文字列照合順番)](http://kikakurui.com/x4/X4061-1996-01.html) order in Ruby.
 
 ## Usage
 
