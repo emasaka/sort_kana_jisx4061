@@ -23,6 +23,10 @@ words_sorted = sort_kana_jisx4061_by(words) {|x| x[:yomi] }
 * Sorting Kanji is not supported
 * Hiragana is converted to Katakana internally
 
+## License
+
+This software is released under the MIT License, see LICENSE.txt.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/emasaka/sort_kana_jisx4061 .
