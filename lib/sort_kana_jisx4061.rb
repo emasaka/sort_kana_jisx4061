@@ -70,6 +70,19 @@ module SortKanaJisx4061         # :nodoc:
   end
 end
 
-def sort_kana_jisx4061_by(ary)
-  ary.sort_by {|x| SortKanaJisx4061::process_yomi(yield(x)) }
+# sort Japanese Kana strings by JIS X 4061 order
+#
+# == Usage
+#  require 'sort_kana_jisx4061'
+#
+#  words = [
+#    { original: '春', yomi: 'ハル' },
+#    { original: '夏', yomi: 'ナツ' },
+#    { original: '秋', yomi: 'アキ' },
+#    { original: '冬', yomi: 'フユ' },
+#  ]
+#
+#  words_sorted = sort_kana_jisx4061_by(words) {|x| x[:yomi] }
+def sort_kana_jisx4061_by(enum)
+  enum.sort_by {|x| SortKanaJisx4061::process_yomi(yield(x)) }
 end
