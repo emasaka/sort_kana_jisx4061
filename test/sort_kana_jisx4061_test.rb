@@ -14,10 +14,15 @@ class SortKanaJisx4061Test < Minitest::Test
     assert SKJX4::compare('ア', 'アア') < 0, '"ア" < "アア"'
   end
 
-  def test_dakuten_and_litter
-    assert SKJX4::compare('ハ', 'バ') == 0, '"ハ" == "バ"'
-    assert SKJX4::compare('ハ', 'パ') == 0, '"ハ" == "パ"'
-    assert SKJX4::compare('ア', 'ァ') == 0, '"ア" == "ァ"'
+  def test_collation_property
+    assert SKJX4::compare('abc', 'Abc') < 0, '"abc" < "Abc"'
+    assert SKJX4::compare('Abc', 'abcd') < 0, '"Abc" < "abcd"'
+
+    assert SKJX4::compare('カナ', 'ガナ') < 0, '"カナ" < "ガナ"'
+    assert SKJX4::compare('ガナ', 'カナリ') < 0, '"ガナ" < "カナリ"'
+
+    assert SKJX4::compare('タッタ', 'タツタ') < 0, '"タッタ" < "タツタ"'
+    assert SKJX4::compare('タツタ', 'タッタラ') < 0, '"タツタ" < "タッタラ"'
   end
 
   def test_onbiki
