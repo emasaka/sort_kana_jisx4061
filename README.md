@@ -20,6 +20,7 @@ words_sorted = sort_kana_jisx4061_by(words) {|x| x[:yomi] }
 
 ## Note
 
+* Strings are exptected to be UTF-8
 * Sorting Kanji is not supported
 * Hiragana is converted to Katakana internally
 
