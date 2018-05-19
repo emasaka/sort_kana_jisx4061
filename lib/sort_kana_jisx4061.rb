@@ -27,9 +27,8 @@ module SortKanaJisx4061         # :nodoc:
           c1 = process_onbiki(c1, r1.last[1])
         end
         c2 = c1
-        c1 = c1.downcase
-        c2 = c2.swapcase  # WORKAROUND: downcase should be smaller than updase
         c1 = base_char(c1)
+        c2 = c2.swapcase  # WORKAROUND: downcase should be smaller than updase
         ccls = jisx4061_charclass(c1)
         r1 << [ccls, c1]; r2 << [ccls, c2]
       end
@@ -66,6 +65,7 @@ module SortKanaJisx4061         # :nodoc:
     }
 
     def base_char(c)
+      c = c.downcase
       BASE_CHAR_TBL[c] || c
     end
 
