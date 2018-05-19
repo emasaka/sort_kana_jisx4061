@@ -19,17 +19,21 @@ module SortKanaJisx4061         # :nodoc:
 
   class << self
     def process_yomi(str)
-      r = []
-      str.each_char do |c|
-        c = c.downcase
-        c = c.tr('ぁ-ん', 'ァ-ン') # Hiragana -> Katakana
-        c = base_char(c)
-        if c == 'ー'
-          c = process_onbiki(c, r.last[1])
+      r1 = []                   # without collation properties
+      r2 = []                   # with collation properties
+      str.each_char do |c1|
+        c1 = c1.tr('ぁ-ん', 'ァ-ン') # Hiragana -> Katakana
+        if c1 == 'ー'
+          c1 = process_onbiki(c1, r1.last[1])
         end
-        r << [jisx4061_charclass(c), c]
+        c2 = c1
+        c1 = c1.downcase
+        c2 = c2.swapcase  # WORKAROUND: downcase should be smaller than updase
+        c1 = base_char(c1)
+        ccls = jisx4061_charclass(c1)
+        r1 << [ccls, c1]; r2 << [ccls, c2]
       end
-      r
+      [r1, r2]
     end
 
     # for test
