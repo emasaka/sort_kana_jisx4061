@@ -5,6 +5,7 @@ require "sort_kana_jisx4061/version"
 Gem::Specification.new do |spec|
   spec.name          = "sort_kana_jisx4061"
   spec.version       = SortKanaJisx4061::VERSION
+  spec.license       = 'MIT'
   spec.authors       = ["emasaka (Masakazu Takahashi)"]
   spec.email         = ["emasaka@gmail.com"]
 
