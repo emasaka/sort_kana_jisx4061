@@ -18,7 +18,15 @@ module SortKanaJisx4061         # :nodoc:
   CC_GETA = 12                  # unused
 
   class << self
-    def process_yomi(str)
+
+    # == Example
+    # 'ガッコウ1'
+    # →
+    # [[[CC_KANA, 'カ'], [CC_KANA, 'ツ'], [CC_KANA, 'コ'],
+    #   [CC_KANA, 'ウ'], [CC_NUMBER, '1'] ],
+    #  [[CC_KANA, 'ガ'], [CC_KANA, 'ッ'], [CC_KANA, 'コ'],
+    #   [CC_KANA, 'ウ'], [CC_NUMBER, '1'] ]]
+    def parse_yomi(str)
       r1 = []                   # without collation properties
       r2 = []                   # with collation properties
       str.each_char do |c1|
@@ -37,7 +45,7 @@ module SortKanaJisx4061         # :nodoc:
 
     # for test
     def compare(str1, str2)
-      process_yomi(str1) <=> process_yomi(str2)
+      parse_yomi(str1) <=> parse_yomi(str2)
     end
 
     private
@@ -97,5 +105,5 @@ end
 #
 #  words_sorted = sort_kana_jisx4061_by(words) {|x| x[:yomi] }
 def sort_kana_jisx4061_by(enum)
-  enum.sort_by {|x| SortKanaJisx4061::process_yomi(yield(x)) }
+  enum.sort_by {|x| SortKanaJisx4061::parse_yomi(yield(x)) }
 end
