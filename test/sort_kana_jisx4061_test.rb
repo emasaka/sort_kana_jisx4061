@@ -20,6 +20,7 @@ class SortKanaJisx4061Test < Minitest::Test
 
     assert SKJX4::compare('カナ', 'ガナ') < 0, '"カナ" < "ガナ"'
     assert SKJX4::compare('ガナ', 'カナリ') < 0, '"ガナ" < "カナリ"'
+    assert SKJX4::compare('カヴ', 'カク') < 0, '"カヴ" < "カク"'
 
     assert SKJX4::compare('タッタ', 'タツタ') < 0, '"タッタ" < "タツタ"'
     assert SKJX4::compare('タツタ', 'タッタラ') < 0, '"タツタ" < "タッタラ"'
